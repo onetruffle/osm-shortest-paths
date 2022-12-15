@@ -25,12 +25,16 @@
 	  
       function initMap() {
 		var bounds = new google.maps.LatLngBounds();
-		bounds.extend(new google.maps.LatLng(44.5396, -94.2256));
-		bounds.extend(new google.maps.LatLng(45.4013, -92.0915));
+		// bounds.extend(new google.maps.LatLng(44.5396, -94.2256));
+		// bounds.extend(new google.maps.LatLng(45.4013, -92.0915));
+        [north, south, east, west] = [45.1452, 44.7500, -92.8276, -93.1819];
+        bounds.extend(new google.maps.LatLng(north, west));
+		bounds.extend(new google.maps.LatLng(south, east));
 		map = new google.maps.Map(document.getElementById('map'), {
 		//   center: {lat: 40.515672, lng: -74.426236},
-          center: {lat: 44.973798586788334, lng: -93.23103892009436},
-          zoom: 14
+        //   center: {lat: 44.9737, lng: -93.2310},
+            center: {lat: (north + south) / 2, lng: (east + west) / 2},
+            zoom: 14
         });
 		map.fitBounds(bounds);
 		var infoWindow;
